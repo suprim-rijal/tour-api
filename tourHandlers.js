@@ -12,18 +12,26 @@ const createTour = (req, res) => {
   res.status(201).json(tour);
 };
 const getTourById = (req, res) => {
-  res.json({ message: "Hello from getTourById" });
+  const tour = Tour.findById(req.params.tourId);
+  if (!tour) {
+    return res.status(404).json({ message: "Tour not found" });
+  }
+  res.json(tour);
 };
 
 const updateTour = (req, res) => {
-  res.json({ message: "Hello from updateTour" });
+  const tour = Tour.update(req.params.tourId, req.body);
+  if (!tour) {
+    return res.status(404).json({ message: "Tour not found" });
+  }
+  res.json(tour);
 };
 
 const deleteTour = (req, res) => {
   res.json({ message: "Hello from deleteTour" });
 };
 
-// Make sure it uses module.exports to send the functions to app.js
+
 module.exports = {
   getAllTours,
   createTour,
