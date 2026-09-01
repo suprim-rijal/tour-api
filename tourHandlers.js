@@ -2,13 +2,15 @@
 const Tour = require("./tourLib");
 
 const getAllTours = (req, res) => {
-  res.json({ message: "Hello from getAllTours" });
+  const tours = Tour.getAll();
+  res.json(tours);
 };
 
 const createTour = (req, res) => {
-  res.json({ message: "Hello from createTour" });
+  const { name, info, image, price, location } = req.body;
+  const tour = Tour.addOne(name, info, image, price, location);
+  res.status(201).json(tour);
 };
-
 const getTourById = (req, res) => {
   res.json({ message: "Hello from getTourById" });
 };
