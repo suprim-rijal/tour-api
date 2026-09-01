@@ -13,6 +13,7 @@ const createTour = (req, res) => {
     return res.status(400).json({ message: "All tour fields are required" });
   }
 
+
   const tour = Tour.addOne(name, info, image, price, location);
   res.status(201).json(tour);
 };
