@@ -41,7 +41,10 @@ const addOne = (name, info, image, price, location) => {
   tours.push(tour);
   return tour;
 };
-
+const getAll = () => {
+  return tours;
+};
 module.exports = {
   addOne,
+  getAll,
 };
