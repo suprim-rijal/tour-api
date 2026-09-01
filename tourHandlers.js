@@ -1,3 +1,6 @@
+// Use require() to bring in the library
+const Tour = require("./tourLib");
+
 const getAllTours = (req, res) => {
   res.json({ message: "Hello from getAllTours" });
 };
@@ -18,33 +21,11 @@ const deleteTour = (req, res) => {
   res.json({ message: "Hello from deleteTour" });
 };
 
+// Make sure it uses module.exports to send the functions to app.js
 module.exports = {
   getAllTours,
   createTour,
   getTourById,
   updateTour,
   deleteTour,
-};
-
-let tours = [];
-let nextId = 1;
-
-const addOne = (name, info, image, price, location) => {
-  const tour = {
-    id: nextId++,
-    name,
-    info,
-    image,
-    price,
-    location,
-  };
-  tours.push(tour);
-  return tour;
-};
-const getAll = () => {
-  return tours;
-};
-module.exports = {
-  addOne,
-  getAll,
 };
